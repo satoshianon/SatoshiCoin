@@ -1,0 +1,33 @@
+# /etc/conf.d/satoshicoind: config file for /etc/init.d/satoshicoind
+
+# Config file location
+#BLACKMORED_CONFIGFILE="/etc/satoshicoin/satoshicoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BLACKMORED_USER)
+#BLACKMORED_PIDDIR="/var/run/satoshicoind"
+
+# What filename to give the pidfile
+#BLACKMORED_PIDFILE="${BLACKMORED_PIDDIR}/satoshicoind.pid"
+
+# Where to write satoshicoind data (be mindful that the blockchain is large)
+#BLACKMORED_DATADIR="/var/lib/satoshicoind"
+
+# User and group to own satoshicoind process
+#BLACKMORED_USER="satoshicoin"
+#BLACKMORED_GROUP="satoshicoin"
+
+# Path to satoshicoind executable
+#BLACKMORED_BIN="/usr/bin/satoshicoind"
+
+# Nice value to run satoshicoind under
+#BLACKMORED_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BLACKMORED_OPTS=""
+
+# The timeout in seconds OpenRC will wait for satoshicoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BLACKMORED_SIGTERM_TIMEOUT=600
