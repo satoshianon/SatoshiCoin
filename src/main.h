@@ -283,9 +283,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &tx, const Consensus::Para
 /** Find the best known block, and make it the tip of the block chain */
 bool ActivateBestChain(CValidationState& state, const CChainParams& chainparams, const CBlock* pblock = NULL);
 
-CAmount PoWValue(int nHeight);
 CAmount GetProofOfWorkSubsidy();
-CAmount PoSValue(int nHeight);
 CAmount GetProofOfStakeSubsidy();
 
 /**

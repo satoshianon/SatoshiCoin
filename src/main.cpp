@@ -1757,60 +1757,55 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
     return true;
 }
 
-CAmount PoWValue(int nHeight)
-{
-    // 1051200 blocks every two years
-    int halvings = nHeight / 1051200;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
-
-    CAmount nSubsidyBase;
-        if (nHeight <= 14191200) {
-            nSubsidyBase = 50;
-        } else if (nHeight <= 3000) {
-	        nSubsidyBase = 500;
-        } else {
-            nSubsidyBase = 0;
-        }
-
-    CAmount nSubsidy = nSubsidyBase * COIN;
-    nSubsidy >>= halvings;
-    return nSubsidy;
-}
-
 CAmount GetProofOfWorkSubsidy()
 {
-    CAmount nSubsidy;
-    nSubsidy = PoWValue(nSubsidy);
-    return nSubsidy;
-}
-
-CAmount PoSValue(int nHeight)
-{
-    // 1051200 blocks every two years
-    int halvings = nHeight / 1051200;
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+    int nBlockHeight = chainActive.Height() + 1;
+    int halvings = nBlockHeight / 525600; // Every 2 years
 
     CAmount nSubsidyBase;
-        if (nHeight <= 14191200) {
-            nSubsidyBase = 5;
-        } else {
-            nSubsidyBase = 0;
-        }
+
+    if (nBlockHeight <= 3000) {
+        nSubsidyBase = 500;
+    }
+    if (nBlockHeight > 3000 && nBlockHeight <= 7095600) {
+        nSubsidyBase = 50;
+    }
+    if (nBlockHeight > 7095600) {
+        nSubsidyBase = 0;
+    }
 
     CAmount nSubsidy = nSubsidyBase * COIN;
-    nSubsidy >>= halvings;
-    return nSubsidy;
+
+    if (nSubsidy == 0) {
+        return 0;
+    } else {
+        nSubsidy >>= halvings;
+        return nSubsidy;
+    }
 }
 
 CAmount GetProofOfStakeSubsidy()
 {
-    CAmount nSubsidy;
-    nSubsidy = PoSValue(nSubsidy);
-    return nSubsidy;
+    int nBlockHeight = chainActive.Height() + 1;
+    int halvings = nBlockHeight / 525600;
+
+    CAmount nSubsidyBase;
+
+    if (nBlockHeight <= 7095600) {
+        nSubsidyBase = 5;
+    }
+    if (nBlockHeight > 7095600) {
+        nSubsidyBase = 0;
+    }
+
+    CAmount nSubsidy = nSubsidyBase * COIN;
+
+    if (nSubsidy == 0) {
+        return 0;
+    } else {
+        nSubsidy >>= halvings;
+        return nSubsidy;
+    }
 }
 
 bool IsInitialBlockDownload()
