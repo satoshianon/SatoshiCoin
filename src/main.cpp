@@ -1764,10 +1764,10 @@ CAmount GetProofOfWorkSubsidy()
 
     CAmount nSubsidyBase;
 
-    if (nBlockHeight <= 3000) {
-        nSubsidyBase = 500;
+    if (nBlockHeight == 1) {
+        nSubsidyBase = 2500000;
     }
-    if (nBlockHeight > 3000 && nBlockHeight <= 7095600) {
+    if (nBlockHeight > 1 && nBlockHeight <= 7095600) {
         nSubsidyBase = 50;
     }
     if (nBlockHeight > 7095600) {

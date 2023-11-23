@@ -113,7 +113,7 @@ public:
         consensus.nProtocolV2Time = 1700158272;
         consensus.nProtocolV3Time = 1700158273;
         consensus.nProtocolV3_1Time = 4102437600;
-        consensus.nLastPOWBlock = 99999999;
+        consensus.nLastPOWBlock = 0x7fffffff;
         consensus.nStakeTimestampMask = 0xf; // 15
         consensus.nCoinbaseMaturity = 3;
 
@@ -138,7 +138,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xbf0e12a9b0d1c914067a1bd173aa7bed8753688e7bf0c6162b5f458769b7cc17"));
 
         vSeeds.push_back(CDNSSeedData("162.0.237.24", "162.0.237.24"));
-        vSeeds.push_back(CDNSSeedData("66.29.133.53", "66.29.133.53"));
+        vSeeds.push_back(CDNSSeedData("162.255.117.32", "162.255.117.32"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,64);
