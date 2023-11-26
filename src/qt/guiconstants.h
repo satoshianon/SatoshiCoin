@@ -49,7 +49,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Satoshi Coin"
-#define QAPP_ORG_DOMAIN "satoshicoinmore.org"
+#define QAPP_ORG_DOMAIN "satoshicoin.pro"
 #define QAPP_APP_NAME_DEFAULT "SatoshiCoin-Qt"
 #define QAPP_APP_NAME_TESTNET "SatoshiCoin-Qt-testnet"
 

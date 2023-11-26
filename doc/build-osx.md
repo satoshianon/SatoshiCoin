@@ -24,6 +24,35 @@ In case you want to build the disk image with `make deploy` (.dmg / optional), y
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
+Boost
+------------------------
+
+1. [Download Boost](https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.gz)
+
+2. Unzip and enter directory
+```
+tar -xzf boost_1_77_0.tar.gz && cd boost_1_77_0
+```
+
+3. Configure and build
+```
+./bootstrap.sh --prefix=/usr/local/Cellar/boost/1.77.0
+./b2
+./b2 install
+```
+
+4. Run configure like so
+```
+./autogen.sh
+./configure --with-boost=/usr/local/Cellar/boost/1.77.0/
+make deploy
+```
+
+If the build process complains about not being able to find openssl, run this then try again:
+```shell
+brew link openssl@1.1 --force
+```
+
 Build SatoshiCoin
 ------------------------
 

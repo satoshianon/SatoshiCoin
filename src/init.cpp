@@ -795,7 +795,7 @@ void InitLogging()
     fLogIPs = GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Satoshi Coin More version %s\n", FormatFullVersion());
+    LogPrintf("Satoshi Coin version %s\n", FormatFullVersion());
 }
 
 /** Initialize bitcoin.

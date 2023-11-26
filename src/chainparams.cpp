@@ -113,7 +113,7 @@ public:
         consensus.nProtocolV2Time = 1700158272;
         consensus.nProtocolV3Time = 1700158273;
         consensus.nProtocolV3_1Time = 4102437600;
-        consensus.nLastPOWBlock = 0x7fffffff;
+        consensus.nLastPOWBlock = 99999999;
         consensus.nStakeTimestampMask = 0xf; // 15
         consensus.nCoinbaseMaturity = 3;
 
@@ -134,6 +134,7 @@ public:
 
         genesis = CreateGenesisBlock(1700158271, 667741, 0x1e0fffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
+
         assert(consensus.hashGenesisBlock == uint256S("0x000001b59db73c86a88fd67485c492b293e63d79863839ee0f214de73af0bef8"));
         assert(genesis.hashMerkleRoot == uint256S("0xbf0e12a9b0d1c914067a1bd173aa7bed8753688e7bf0c6162b5f458769b7cc17"));
 
@@ -219,6 +220,7 @@ public:
 
         genesis = CreateGenesisBlock(1700158271, 2054, 0x1f00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
+
         assert(consensus.hashGenesisBlock == uint256S("0x00004f5f2dc7816736232fb10188391e3dda1737e95075ec0560da03d2bebb20"));
         assert(genesis.hashMerkleRoot == uint256S("0xbf0e12a9b0d1c914067a1bd173aa7bed8753688e7bf0c6162b5f458769b7cc17"));
 
@@ -303,6 +305,7 @@ public:
 
         genesis = CreateGenesisBlock(1700158271, 2054, 0x1f00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
+
         assert(consensus.hashGenesisBlock == uint256S("0x00004f5f2dc7816736232fb10188391e3dda1737e95075ec0560da03d2bebb20"));
         assert(genesis.hashMerkleRoot == uint256S("0xbf0e12a9b0d1c914067a1bd173aa7bed8753688e7bf0c6162b5f458769b7cc17"));
 
