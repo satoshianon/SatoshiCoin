@@ -1,7 +1,8 @@
 Satoshi Coin
 =====================================
 
-https://satoshicoin.pro
+* Website - https://satoshicoin.pro
+* Explorer - https://explorer.satoshicoin.pro
 
 What is Satoshi Coin?
 ----------------
