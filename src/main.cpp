@@ -1762,6 +1762,9 @@ CAmount GetProofOfWorkSubsidy()
     int nBlockHeight = chainActive.Height() + 1;
     int halvings = nBlockHeight / 525600; // Every 2 years
 
+    if (halvings >= 13)
+        return 0;
+
     CAmount nSubsidyBase;
 
     if (nBlockHeight == 1) {
@@ -1779,45 +1782,32 @@ CAmount GetProofOfWorkSubsidy()
     if (nBlockHeight == 5) {
         nSubsidyBase = 210000;
     }
-    if (nBlockHeight > 5 && nBlockHeight <= 7095600) {
+    if (nBlockHeight > 5) {
         nSubsidyBase = 50;
-    }
-    if (nBlockHeight > 7095600) {
-        nSubsidyBase = 0;
     }
 
     CAmount nSubsidy = nSubsidyBase * COIN;
 
-    if (nSubsidy == 0) {
+    nSubsidy >>= halvings;
+    return nSubsidy;
+}
+
+CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
+{
+    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    // Force block reward to zero when right shift is undefined.
+    if (halvings >= 64)
         return 0;
-    } else {
-        nSubsidy >>= halvings;
-        return nSubsidy;
-    }
+
+    CAmount nSubsidy = 50 * COIN;
+    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    nSubsidy >>= halvings;
+    return nSubsidy;
 }
 
 CAmount GetProofOfStakeSubsidy()
 {
-    int nBlockHeight = chainActive.Height() + 1;
-    int halvings = nBlockHeight / 525600;
-
-    CAmount nSubsidyBase;
-
-    if (nBlockHeight <= 7095600) {
-        nSubsidyBase = 5;
-    }
-    if (nBlockHeight > 7095600) {
-        nSubsidyBase = 0;
-    }
-
-    CAmount nSubsidy = nSubsidyBase * COIN;
-
-    if (nSubsidy == 0) {
-        return 0;
-    } else {
-        nSubsidy >>= halvings;
-        return nSubsidy;
-    }
+    return COIN * 5;
 }
 
 bool IsInitialBlockDownload()
