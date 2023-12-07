@@ -1272,14 +1272,11 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 
     CAmount nSubsidyBase;
 
-    if (nHeight == 1) {
+    if (nHeight == 2) {
         nSubsidyBase = 1050000;
     }
-    if (nHeight == 2) {
-        nSubsidyBase = 420000;
-    }
     if (nHeight == 3) {
-        nSubsidyBase = 210000;
+        nSubsidyBase = 420000;
     }
     if (nHeight == 4) {
         nSubsidyBase = 210000;
@@ -1287,7 +1284,10 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     if (nHeight == 5) {
         nSubsidyBase = 210000;
     }
-    if (nHeight > 5) {
+    if (nHeight == 6) {
+        nSubsidyBase = 210000;
+    }
+    if (nHeight > 6) {
         nSubsidyBase = 50;
     }
 
