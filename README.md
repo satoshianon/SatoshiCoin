@@ -1,9 +1,9 @@
 Satoshi Coin Core integration/staging tree
 =====================================
 
-* Website - https://satoshicoin.pro
-* Explorer - https://explorer.satoshicoin.pro
-* Pool - https://pool.satoshicoin.pro
+* Website - https://satoshicoin.network
+* Explorer - https://explorer.satoshicoin.network
+* Pool - https://pool.satoshicoin.network
 
 What is Satoshi Coin?
 ----------------
@@ -15,7 +15,7 @@ out collectively by the network. Satoshi Coin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Satoshi Coin Core software, see [https://satoshicoin.pro](https://satoshicoin.pro).
+the Satoshi Coin Core software, see [https://satoshicoin.network](https://satoshicoin.network).
 
 License
 -------
