@@ -69,7 +69,7 @@ public:
         consensus.nSubsidyHalvingInterval = 525000;
         consensus.BIP16Height = 0;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256();
+        consensus.BIP34Hash = uint256S("0xd218809cf0e659301d1c4ffb01579f3568371794259f07a6127724d476749e59");
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
         consensus.CSVHeight = 0;
@@ -93,11 +93,11 @@ public:
 
         // Deployment of MWEB (LIP-0002, LIP-0003, and LIP-0004)
         consensus.vDeployments[Consensus::DEPLOYMENT_MWEB].bit = 4;
-        consensus.vDeployments[Consensus::DEPLOYMENT_MWEB].nStartHeight = 2217600; // End Feb 2022
-        consensus.vDeployments[Consensus::DEPLOYMENT_MWEB].nTimeoutHeight = 2427264; // 364 days later
+        consensus.vDeployments[Consensus::DEPLOYMENT_MWEB].nStartHeight = 2217600;
+        consensus.vDeployments[Consensus::DEPLOYMENT_MWEB].nTimeoutHeight = 2427264;
 
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000100001");
-        consensus.defaultAssumeValid = uint256S("0xd218809cf0e659301d1c4ffb01579f3568371794259f07a6127724d476749e59"); // 0
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000174e70f5baf334d");
+        consensus.defaultAssumeValid = uint256S("0x1bf86c8b75175e90e2c226a2a52aa8eefddb6fe35a3a018a9260d98cb123fcb0");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -152,14 +152,27 @@ public:
         checkpointData = {
             {
                 {  0, uint256S("0xd218809cf0e659301d1c4ffb01579f3568371794259f07a6127724d476749e59")},
+                {  1, uint256S("0x81baf2076349e481cbfb3c54a5da179c91b42af9504cf9668101f53fc82c86b4")},
+                {  4, uint256S("0x996fabe2f81c9e23bbff960f0cf78cf72fd1da0f35d7452523b5e5b12d1aa853")},
+                {  16, uint256S("0xb4527e7864c6f870a6cbaa2079cc4a634a4dc5e73551dd61efe8efe1ae3f3f2b")},
+                {  159, uint256S("0xcfd2b0067278dbe806a6f95b691dc9bf1a8758a3cbb866244c43b02ed028756f")},
+                {  2537, uint256S("0x89d935b830f469a2f747003808eaef2c97469932c3d9aae0177d250071b1b859")},
+                {  5354, uint256S("0xe24d89b117deaa22f6ea6b75484929c637b2780857539fc11892a7df588be5e8")},
+                {  6541, uint256S("0x708cde5f336e353a43e863ff4141a3a2ee128e5808542ba0cd09d11f196ef556")},
+                {  8404, uint256S("0x5d07596d6f571a5a052385275c8a798666aeda6ae4829a5fb1ac9b4973c50efb")},
+                {  8453, uint256S("0x28874dc7fedafe4c2c557631cb2ccc4f5b896ef58e20010a4dc17f6a55f97b70")},
+                {  8454, uint256S("0x8e51b4e43cc378ba066f588e8e8db790b227e959ac8c17b19f8ef9e695682ea0")},
+                {  8455, uint256S("0x0f72423b6832b274fbdc1618d255a0e747c3f1abc145e9ffe9eb60c930fb43f6")},
+                {  8456, uint256S("0xf78461aa8336d601baed3c5660ce8ececfce26c8ac2399a2016025efad602066")}, // LWMA
+                {  8457, uint256S("0x1bf86c8b75175e90e2c226a2a52aa8eefddb6fe35a3a018a9260d98cb123fcb0")},
             }
         };
 
         chainTxData = ChainTxData{
-            // Data from rpc: getchaintxstats 4096 62e2e3d21343a00994d38a63524867507dbeee6850e8fbf02e9c47a3ccf82f24
-            /* nTime    */ 1701833247,
-            /* nTxCount */ 0,
-            /* dTxRate  */ 0.0
+            // Data from rpc: getchaintxstats
+            /* nTime    */ 1703441885,
+            /* nTxCount */ 10500,
+            /* dTxRate  */ 0.007932976
         };
     }
 };
