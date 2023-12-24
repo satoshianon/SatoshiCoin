@@ -78,6 +78,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 1 * 60; // every blocks
         consensus.nPowTargetSpacing = 1 * 60;
+	consensus.lwmaAveragingWindow = 125;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 3; // 75% of 4
@@ -123,6 +124,8 @@ public:
         // This is fine at runtime as we'll fall back to using them as an addrfetch if they don't support the
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
+
+
         vSeeds.emplace_back("seed01.satoshicoin.app");
         vSeeds.emplace_back("seed02.satoshicoin.app");
         vSeeds.emplace_back("seed03.satoshicoin.app");
@@ -131,6 +134,7 @@ public:
         vSeeds.emplace_back("seed01.satoshicoin.network");
         vSeeds.emplace_back("seed02.satoshicoin.network");
         vSeeds.emplace_back("seed03.satoshicoin.network");
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,64);
