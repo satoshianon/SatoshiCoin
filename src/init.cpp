@@ -1304,8 +1304,37 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     } else {
         // Not categorizing as "Warning" because it's the default behavior
         LogPrintf("Config file: %s (not found, skipping)\n", config_file_path.string());
+        FILE* configFile = fopen(GetConfigFile(gArgs.GetArg("-conf", BITCOIN_CONF_FILENAME)).string().c_str(), "a");
+        if (configFile != NULL) {
+            std::string strHeader = "# Satoshicoin(SAT) config file:\n"
+                                    "rpcuser=username\n"
+                                    "rpcpassword=password\n"
+                                    "server=1\n"
+                                    "listen=1\n"
+                                    "daemon=1\n"
+                                    "upnp=1\n"
+                                    "port=14742\n"
+                                    "rpcport=9332\n"
+                                    "rpcbind=127.0.0.1\n"
+                                    "maxconnections=20\n"
+                                    "fallbackfee=0.0001\n"
+                                    "rpcallowip=127.0.0.1\n"
+                                    "deprecatedrpc=accounts\n"
+                                    "\n"
+                                    "# Addnodes:\n"
+                                    "addnode=seed01.satoshicoin.app\n"
+                                    "addnode=seed02.satoshicoin.app\n"
+                                    "addnode=seed03.satoshicoin.app\n"
+                                    "addnode=seed01.urcoin.cc\n"
+                                    "addnode=seed02.urcoin.cc\n"
+                                    "addnode=seed01.satoshicoin.network\n"
+                                    "addnode=seed02.satoshicoin.network\n"
+                                    "addnode=seed03.satoshicoin.network\n"
+                                    "\n";
+            fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
+            fclose(configFile);
+        }
     }
-
     // Log the config arguments to debug.log
     args.LogArgs();
 
