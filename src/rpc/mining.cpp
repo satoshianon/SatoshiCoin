@@ -727,9 +727,20 @@ static RPCHelpMan getblocktemplate()
     }
 
     // GBT must be called with 'segwit' and 'mweb' sets in the rules
-    if (setClientRules.count("segwit") != 1 || setClientRules.count("mweb") != 1) {
+/******
+    if (setClientRules.count("segwit") != 1 || setClientRules.count("mweb") != 1)
+   {
         throw JSONRPCError(RPC_INVALID_PARAMETER, "getblocktemplate must be called with the segwit & mweb rule sets (call with {\"rules\": [\"mweb\", \"segwit\"]})");
     }
+******/
+
+	// only segwit now, will enable mweb later in another upgrade
+    if (setClientRules.count("segwit") != 1)
+   {
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "getblocktemplate must be called with the segwit rule sets (call with {\"rules\": [\"segwit\"]})");
+    }
+
+
 
     // Update block
     static CBlockIndex* pindexPrev;
