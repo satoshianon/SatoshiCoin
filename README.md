@@ -3,7 +3,7 @@ Satoshi Coin Core integration/staging tree
 
 * Website - https://satoshicoin.network
 * Explorer - https://explorer.satoshicoin.network
-* Pool - https://pool.satoshicoin.network
+* Pool - https://satoshicoin.app
 
 What is Satoshi Coin?
 ----------------
